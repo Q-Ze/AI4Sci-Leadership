@@ -1,8 +1,6 @@
 # AI4Sci Leadership
 
-Reproducible, editable Matplotlib figures for an AI-for-Science (AI4Sci)
-leadership study. The repository contains 28 self-contained plot modules grouped
-by manuscript figure.
+Reproducible, editable Matplotlib figures for an AI-for-Science (AI4Sci) leadership study.
 
 ## Repository layout
 
@@ -11,6 +9,7 @@ figure1/   Author roles and participation
 figure2/   Field engagement and citation redirection
 figure3/   Career timing, collaboration routes, and diversity
 figure4/   Career pivots, citation audiences, and rewards
+supplementary/   Supplementary and sensitivity figures
 ```
 
 Every subdirectory contains a `plot.py` module with:
@@ -63,3 +62,21 @@ figure.savefig("figure.png", dpi=300, bbox_inches="tight")
 - `scipy` is used by the density-based scatter plot in Figure 2.
 - Generated figures and local virtual environments are intentionally ignored by
   Git.
+
+## Latest manuscript panel set
+
+The `fig-<number>-<panel>-...` directories are the modules aligned to the
+2026-10-13 manuscript. Main panels are stored under `figure1/` through
+`figure4/`; supplementary panels are stored under `supplementary/`. Figure 1A
+is a conceptual classification diagram rather than a Matplotlib data figure and
+therefore has no statistical `plot.py` module.
+
+## Deduplication policy
+
+- The manuscript-aligned `fig-*` module is canonical when an older descriptive
+  directory contains the same analysis and embedded data.
+- Window-sensitivity panels and raw/adjusted reward panels are kept in their
+  manuscript composite modules instead of duplicated as separate modules.
+- Modules with genuinely different endpoints or denominators remain separate,
+  including career-age leadership endpoints, author-level pivots, JCR mapping
+  variants, and citation-audience definitions.

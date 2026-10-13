@@ -26,7 +26,10 @@ def load_module(path: Path):
 
 
 def render_all(output_dir: Path, dpi: int) -> int:
-    paths = sorted(ROOT.glob("figure*/**/plot.py"))
+    paths = sorted([
+        *ROOT.glob("figure*/**/plot.py"),
+        *ROOT.glob("supplementary/**/plot.py"),
+    ])
     for path in paths:
         module = load_module(path)
         figure = module.render(module.prepare_data(), module.PLOT_SETTINGS)
