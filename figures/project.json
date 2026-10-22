@@ -1,0 +1,91 @@
+{
+  "id": "ai4sci-leadership",
+  "name": "AI4Sci Leadership",
+  "description": "Current manuscript figures, organized from the 2026-10-22 figrues-new export.",
+  "plots": [
+    {
+      "id": "fig-1-b-author-composition",
+      "directory": "fig-1-b-author-composition",
+      "name": "Figure 1b — Merged author composition · Original ratio",
+      "description": "Original-size author-origin areas with directly labeled AI-origin first- and last-author shares."
+    },
+    {
+      "id": "fig-1-c-active-role-shares",
+      "directory": "fig-1-c-active-role-shares",
+      "name": "Figure 1c — Annual active-role shares · Direct labels",
+      "description": "Annual active-role composition with labels placed directly inside the stacked areas."
+    },
+    {
+      "id": "fig-1-d-career-age-density",
+      "directory": "fig-1-d-career-age-density",
+      "name": "Figure 1d — Common-window career-age density",
+      "description": "Author-level density of career age at first AI4Sci paper after restricting career starts to 1995 or later."
+    },
+    {
+      "id": "fig-1-e-historical-jcr-last-author",
+      "directory": "fig-1-e-historical-jcr-last-author",
+      "name": "Figure 1e — Historical JCR last-author composition",
+      "description": "AI-origin last-author shares by lagged historical JCR quartile."
+    },
+    {
+      "id": "fig-2-b-extension",
+      "directory": "fig-2-b-extension",
+      "name": "Figure 2b — Extension · 独立子图",
+      "description": "Extension trends for all, AI-led and Domain-led AI4Sci papers, with independently editable curve labels."
+    },
+    {
+      "id": "fig-2-b-foundation",
+      "directory": "fig-2-b-foundation",
+      "name": "Figure 2b — Foundation · 独立子图",
+      "description": "Foundation trends for all, AI-led and Domain-led AI4Sci papers, with independently editable curve labels."
+    },
+    {
+      "id": "fig-2-b-generalization",
+      "directory": "fig-2-b-generalization",
+      "name": "Figure 2b — Generalization · 独立子图",
+      "description": "Generalization trends for all, AI-led and Domain-led AI4Sci papers, with independently editable curve labels."
+    },
+    {
+      "id": "fig-3-a-chaperone-routes",
+      "directory": "fig-3-a-chaperone-routes",
+      "name": "Figure 3a — Chaperone paper routes",
+      "description": "Paper-level shares of established Domain-led, chaperoned AI-led, and independent AI-led AI4Sci routes."
+    },
+    {
+      "id": "fig-3-b-top10-foundation-by-route",
+      "directory": "fig-3-b-top10-foundation-by-route",
+      "name": "Figure 3b — Top 10% Foundation share by route",
+      "description": "Share of papers in the field-year top 10% of the one-year-window Foundation index, by last-author route, with naive 95% confidence intervals."
+    },
+    {
+      "id": "fig-3-c-outsider-author-share",
+      "directory": "fig-3-c-outsider-author-share",
+      "name": "Figure 3c — Outsider-author share",
+      "description": "Complementary-specialist shares in AI-led and Domain-led AI4Sci teams, shown as five-year EWMAs."
+    },
+    {
+      "id": "fig-3-d-citation-entropy",
+      "directory": "fig-3-d-citation-entropy",
+      "name": "Figure 3d — Global-normalized citation entropy",
+      "description": "Five-year EWMAs of globally normalized citation entropy for AI and Domain references, with a Domain-minus-AI inset."
+    },
+    {
+      "id": "fig-4-a-citation-audience-amount",
+      "directory": "fig-4-a-citation-audience-amount",
+      "name": "Figure 4a — Citation audience amount",
+      "description": "Raw AI- and Domain-origin citation-edge counts to AI4Sci papers across historical JCR quartiles, shown on a logarithmic axis."
+    },
+    {
+      "id": "fig-4-b-reward-probabilities",
+      "directory": "fig-4-b-reward-probabilities",
+      "name": "Figure 4b — Raw and adjusted reward probabilities",
+      "description": "Raw and year- plus field-adjusted NIH, NSF, and news probabilities for AI-led and Domain-led AI4Sci papers."
+    },
+    {
+      "id": "fig-4-c-leadership-route-impact",
+      "directory": "fig-4-c-leadership-route-impact",
+      "name": "Figure 4c — Origin-normalized · Leadership routes",
+      "description": "Origin-normalized citation impact before the pivot and across post-pivot team-origin and leadership-route combinations, shown for AI-active and Domain-active transition cohorts."
+    }
+  ]
+}

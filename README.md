@@ -1,28 +1,55 @@
 # AI4Sci Leadership
 
-Reproducible, editable Matplotlib figures for an AI-for-Science (AI4Sci) leadership study.
+Reproducible, editable Matplotlib figures for a study of leadership in
+AI-for-Science (AI4Sci). The figures examine how researchers from AI and domain
+science backgrounds participate in AI4Sci, lead collaborations, draw on existing
+knowledge, and receive citations and external recognition.
+
+The repository contains 14 main-figure modules and 9 supplementary modules.
+Each module embeds the aggregated data needed to reproduce its figure and
+exposes editable visual settings through Matplot Studio.
+
+## Figures
+
+| Figure | Topic |
+| --- | --- |
+| 1b | Author-origin composition and first- and last-author shares |
+| 1c | Annual active-role composition |
+| 1d | Career age at first AI4Sci publication within a common observation window |
+| 1e | Last-author composition by historical JCR quartile |
+| 2b | Extension, Foundation, and Generalization trends in three separate panels |
+| 3a | Chaperoned and independent leadership routes |
+| 3b | Share of papers in the top 10% of Foundation scores by leadership route |
+| 3c | Complementary-specialist shares in AI-led and domain-led teams |
+| 3d | Globally normalized citation entropy |
+| 4a | Citation-audience counts by historical JCR quartile |
+| 4b | Raw and adjusted funding and news probabilities |
+| 4c | Origin-normalized citation impact by leadership route |
+
+Supplementary figures cover author counts, role transitions, home-subfield
+reception, sensitivity analyses, entry routes, collaboration, and citation-audience
+composition.
 
 ## Repository layout
 
 ```text
-figure1/   Author roles and participation
-figure2/   Field engagement and citation redirection
-figure3/   Career timing, collaboration routes, and diversity
-figure4/   Career pivots, citation audiences, and rewards
-supplementary/   Supplementary and sensitivity figures
+figures/
+  project.json                 Matplot Studio project manifest
+  plots/fig-<panel>-<topic>/    Main-figure modules
+supplementary/                 Supplementary figure modules
+docs/figure-index.md           Figure index
+render_all.py                  Batch rendering entry point
+requirements.txt               Python dependencies
 ```
 
-Every subdirectory contains a `plot.py` module with:
-
-- `PLOT_META`: figure metadata;
-- `PLOT_SCHEMA` and `PLOT_SETTINGS`: editable visual properties;
-- `prepare_data()`: reconstruction of the embedded source table;
-- `render(data, settings)`: figure rendering.
-
-The aggregated research results required by each plot are embedded in its
-module, so no external data files or database credentials are needed.
+Each `plot.py` provides metadata (`PLOT_META`), editable properties
+(`PLOT_SCHEMA` and `PLOT_SETTINGS`), embedded-data preparation (`prepare_data()`),
+and figure rendering (`render(data, settings)`). Rendering requires no database
+credentials or external data files.
 
 ## Quick start
+
+Run these commands from the repository root:
 
 ```bash
 python -m venv .venv
@@ -31,52 +58,49 @@ pip install -r requirements.txt
 python render_all.py
 ```
 
-Rendered PNG files are written to `rendered/` by default. Use a different
-destination or resolution if needed:
+By default, the renderer generates the 14 main figures as PNG files under
+`rendered/figures/plots/`.
 
 ```bash
-python render_all.py --output-dir output --dpi 300
+# List main-figure modules
+python render_all.py --list
+
+# Render supplementary figures
+python render_all.py --collection supplementary
+
+# Render all 23 modules at publication resolution
+python render_all.py --collection all --output-dir output --dpi 300
 ```
 
-## Rendering one module
-
-Because directory names contain hyphens, load a module by file path:
+## Render a single figure
 
 ```python
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
+import matplotlib.pyplot as plt
 
-path = Path("figure1/area-annual-active-role-shares/plot.py")
+path = Path("figures/plots/fig-1-b-author-composition/plot.py")
 spec = spec_from_file_location("ai4sci_plot", path)
 module = module_from_spec(spec)
 spec.loader.exec_module(module)
 
 figure = module.render(module.prepare_data(), module.PLOT_SETTINGS)
 figure.savefig("figure.png", dpi=300, bbox_inches="tight")
+plt.close(figure)
 ```
 
-## Notes
+## Edit in Matplot Studio
 
-- The modules default to Arial; Matplotlib will use a fallback font when Arial
-  is unavailable.
-- `scipy` is used by the density-based scatter plot in Figure 2.
-- Generated figures and local virtual environments are intentionally ignored by
-  Git.
+Import the `figures/` directory as a
+[Matplot Studio](https://github.com/Q-Ze/matplot-studio) project to edit the main
+figures through their visual properties and Python source. The project manifest
+specifies the panel order and maps each panel to its plotting module.
 
-## Latest manuscript panel set
+## Dependencies and output
 
-The `fig-<number>-<panel>-...` directories are the modules aligned to the
-2026-10-13 manuscript. Main panels are stored under `figure1/` through
-`figure4/`; supplementary panels are stored under `supplementary/`. Figure 1A
-is a conceptual classification diagram rather than a Matplotlib data figure and
-therefore has no statistical `plot.py` module.
-
-## Deduplication policy
-
-- The manuscript-aligned `fig-*` module is canonical when an older descriptive
-  directory contains the same analysis and embedded data.
-- Window-sensitivity panels and raw/adjusted reward panels are kept in their
-  manuscript composite modules instead of duplicated as separate modules.
-- Modules with genuinely different endpoints or denominators remain separate,
-  including career-age leadership endpoints, author-level pivots, JCR mapping
-  variants, and citation-audience definitions.
+- Plotting uses Matplotlib, NumPy, and pandas. Supplementary Figure S2 also uses
+  SciPy for density estimation.
+- Figures use Arial by default; Matplotlib substitutes an available font when
+  Arial is unavailable.
+- Generated PNG, PDF, and SVG files, caches, and virtual environments are
+  excluded from Git.
